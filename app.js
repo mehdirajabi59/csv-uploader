@@ -6,7 +6,7 @@ const app = express();
 connectDB();
 
 app.use(express.json());
-app.use(authRoutes);
+app.use("/api/users", authRoutes);
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
