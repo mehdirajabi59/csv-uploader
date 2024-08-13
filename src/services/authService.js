@@ -14,7 +14,7 @@ const LoginResponseDTO = require("../dto/authService/loginResponseDTO");
  */
 const registerUser = async registerUserDTO => {
 	if (await findUserByEmail(registerUserDTO.getEmail())) {
-		throw new Error(getLocalizedMessage("ERRORS.USER_NOT_FOUND"));
+		throw new Error(getLocalizedMessage("ERRORS.USER_ALREADY_REGISTERED"));
 	}
 	return createUser(
 		new CreateUserDTO()

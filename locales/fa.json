@@ -1,6 +1,7 @@
 {
   "ERRORS": {
     "USER_NOT_FOUND": "کاربری با این مشخصات پیدا نشد.",
+    "USER_ALREADY_REGISTERED": "شما قبلا ثبت نام کزده اید.",
     "INVALID_REQUEST": "درخواست نامعتبر می باشد.",
     "LOGIN_FAILED": "نام کاربری یا رمز عبور صحیح نمی باشد"
   }
