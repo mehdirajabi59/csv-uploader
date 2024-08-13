@@ -1,6 +1,7 @@
 {
   "ERRORS": {
-    "USER_NOT_FOUND": "User not found.",
-    "INVALID_REQUEST": "The request is invalid."
+    "USER_NOT_FOUND": "کاربری با این مشخصات پیدا نشد.",
+    "INVALID_REQUEST": "درخواست نامعتبر می باشد.",
+    "LOGIN_FAILED": "نام کاربری یا رمز عبور صحیح نمی باشد"
   }
 }
