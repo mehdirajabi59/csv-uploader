@@ -1,0 +1,31 @@
+{
+  "name": "csv_uploader",
+  "version": "1.0.0",
+  "description": "CSV uploader application",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node --watch server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mehdi Rajabi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
