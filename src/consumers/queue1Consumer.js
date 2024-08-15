@@ -9,10 +9,9 @@ const startQueue1Consumer = async () => {
 	const { channel } = await connectRabbitMQ();
 	await assertQueues([QUEUE1]);
 	channel.consume(QUEUE1, async msg => {
-		const { filePath, userId } = JSON.parse(msg.content.toString());
+		const { data, user_id } = JSON.parse(msg.content.toString());
 		try {
-			const records = await parseCSV(filePath.path);
-			await csvService.saveCSV(records, userId);
+			await csvService.saveCSV([data], user_id);
 			channel.ack(msg); // Acknowledge the message
 		} catch (err) {
 			if (err instanceof ServiceException) {
