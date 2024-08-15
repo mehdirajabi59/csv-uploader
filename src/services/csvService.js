@@ -10,7 +10,7 @@ const { getLocalizedMessage } = require("../utils/localeHandler");
  * @param {string} userId
  * @returns {Promise<void>}
  */
-const uploadCSV = async (csvArrayData, userId) => {
+const saveCSV = async (csvArrayData, userId) => {
 	try {
 		const csvDataDTO = [];
 		csvArrayData.forEach(csv => {
@@ -51,7 +51,7 @@ const deleteOne = async dto => {
 	await csvRepository.deleteOne(dto);
 };
 module.exports = {
-	uploadCSV,
+	saveCSV,
 	getAll,
 	deleteOne,
 };

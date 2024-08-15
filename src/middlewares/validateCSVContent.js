@@ -1,39 +1,19 @@
 const fs = require("fs");
-const csvParser = require("csv-parser");
 const { getLocalizedMessage } = require("../utils/localeHandler");
+const { parseCSV } = require("../utils/parseCSV");
 // Middleware to validate the content of the CSV file
 const validateCSVContentMiddleware = async (req, res, next) => {
-	const file = req.file;
+	const file = req.file.path;
 
 	if (!file) {
 		return res.status(400).json({
 			message: getLocalizedMessage("ERRORS.FILE_NOT_FOUND"),
 		});
 	}
-
-	const csvDataArray = [];
-
 	try {
-		await new Promise((resolve, reject) => {
-			fs.createReadStream(file.path)
-				.pipe(csvParser())
-				.on("data", chunk => {
-					const { code, ...data } = chunk;
-					// Validate each row
-					if (code && data) {
-						// Add further validation logic here if needed
-						csvDataArray.push({
-							code: code,
-							data: data,
-						});
-					}
-				})
-				.on("end", resolve)
-				.on("error", reject);
-		});
-
-		req.validatedCSVData = csvDataArray; // Store validated data in req
-		if (csvDataArray.length === 0) {
+		const records = await parseCSV(file);
+		req.validatedCSVData = records; // Store validated data in req
+		if (records.length === 0) {
 			return res.status(400).json({
 				message: getLocalizedMessage("ERRORS.CSV_CONTENT_INVALID"),
 			});

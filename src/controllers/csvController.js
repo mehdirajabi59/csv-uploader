@@ -7,7 +7,7 @@ const uploadCSV = async (req, res) => {
 	const validatedCSVData = req.validatedCSVData;
 
 	try {
-		await csvService.uploadCSV(validatedCSVData, req.user_id);
+		await csvService.saveCSV(validatedCSVData, req.user_id);
 		res
 			.status(200)
 			.json({ message: getLocalizedMessage("MESSAGES.SUCCESSFUL") });
