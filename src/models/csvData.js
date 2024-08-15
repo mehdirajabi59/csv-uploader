@@ -6,8 +6,7 @@ const csvDataSchema = new mongoose.Schema({
 		unique: true,
 	},
 	data: {
-		type: Map,
-		of: String,
+		type: Object,
 		required: true,
 	},
 	user: {
