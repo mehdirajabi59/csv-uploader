@@ -14,11 +14,14 @@ const removeTempFile = require("../middlewares/removeTempFile");
 
 router.post(
 	"/upload",
-	authenticationToken,
 	upload.single("file"),
 	validateFileExtension,
 	validateCSVContentMiddleware,
 	removeTempFile,
 	csvController.uploadCSV
 );
+
+router.get("/", csvController.index);
+router.delete("/:code", csvController.deleteCsv);
+
 module.exports = router;

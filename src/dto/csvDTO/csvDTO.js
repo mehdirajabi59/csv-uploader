@@ -1,8 +1,8 @@
-class CSVInsertDTO {
+class CsvDTO {
 	/**
 	 *
 	 * @param {string} code
-	 * @returns {CSVInsertDTO}
+	 * @returns {CsvDTO}
 	 */
 	setCode(code) {
 		this.code = code;
@@ -19,7 +19,7 @@ class CSVInsertDTO {
 
 	/**
 	 * @param {string} user
-	 * @returns {CSVInsertDTO}
+	 * @returns {CsvDTO}
 	 */
 	setUser(user) {
 		this.user = user;
@@ -34,7 +34,7 @@ class CSVInsertDTO {
 
 	/**
 	 * @param {object} data
-	 * @returns {CSVInsertDTO}
+	 * @returns {CsvDTO}
 	 */
 	setData(data) {
 		this.data = data;
@@ -49,4 +49,4 @@ class CSVInsertDTO {
 	}
 }
 
-module.exports = CSVInsertDTO;
+module.exports = CsvDTO;

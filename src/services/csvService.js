@@ -1,7 +1,7 @@
 const fs = require("fs");
 const ServiceException = require("../exception/ServiceException");
-const CSVInsertDTO = require("../dto/csvDTO/csvInsertDTO");
-const { createManyRecords } = require("../repositories/csvRepository");
+const CSVInsertDTO = require("../dto/csvDTO/csvDTO");
+const csvRepository = require("../repositories/csvRepository");
 const { getLocalizedMessage } = require("../utils/localeHandler");
 
 /**
@@ -18,7 +18,7 @@ const uploadCSV = async (csvArrayData, userId) => {
 				new CSVInsertDTO().setCode(csv.code).setUser(userId).setData(csv.data)
 			);
 		});
-		await createManyRecords(csvDataDTO);
+		await csvRepository.createManyRecords(csvDataDTO);
 	} catch (err) {
 		if (err.code === 11000) {
 			throw new ServiceException(
@@ -34,6 +34,24 @@ const uploadCSV = async (csvArrayData, userId) => {
 	}
 };
 
+const getAll = async userId => csvRepository.getAll(userId);
+
+/**
+ *
+ * @param {DeleteRequestDTO} dto
+ * @returns {Promise<void>}
+ */
+const deleteOne = async dto => {
+	if (!(await csvRepository.isExists(dto))) {
+		throw new ServiceException(
+			getLocalizedMessage("ERRORS.CSV_NOT_FOUND"),
+			400
+		);
+	}
+	await csvRepository.deleteOne(dto);
+};
 module.exports = {
 	uploadCSV,
+	getAll,
+	deleteOne,
 };
