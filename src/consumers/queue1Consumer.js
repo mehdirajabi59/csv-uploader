@@ -1,5 +1,4 @@
 const { connectRabbitMQ, assertQueues } = require("../config/rabbitmq");
-const { parseCSV } = require("../utils/parseCSV");
 const csvService = require("../services/csvService");
 const ServiceException = require("../exception/ServiceException");
 
