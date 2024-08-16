@@ -31,7 +31,6 @@ const login = async (req, res) => {
 		const loginResponseDTO = await loginUser(
 			new LoginUserRequestDTO().setEmail(email).setPassword(password)
 		);
-		console.log(loginResponseDTO);
 		return res.status(200).json({
 			status: "success",
 			data: {

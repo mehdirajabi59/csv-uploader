@@ -33,7 +33,6 @@ const loginUser = async loginUserDTO => {
 		throw new Error(getLocalizedMessage("ERRORS.LOGIN_FAILED"));
 	}
 	if (!bcrypt.compareSync(loginUserDTO.getPassword(), user.password)) {
-		console.log(loginUserDTO.getPassword(), user.password);
 		throw new Error(getLocalizedMessage("ERRORS.LOGIN_FAILED"));
 	}
 	const token = jwt.sign({ user_id: user.getId() }, process.env.SECRET_KEY);

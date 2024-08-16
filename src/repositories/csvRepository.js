@@ -28,7 +28,7 @@ const getAll = async userId => {
 	data.forEach(row => {
 		dto.push(new CsvDTO().setCode(row.code).setUser(userId).setData(row.data));
 	});
-	console.log(dto);
+
 	return dto;
 };
 

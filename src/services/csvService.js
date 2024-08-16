@@ -18,7 +18,6 @@ const saveCSV = async (csvArrayData, userId) => {
 				new CSVInsertDTO().setCode(csv.code).setUser(userId).setData(csv.data)
 			);
 		});
-		console.log(csvDataDTO);
 		await csvRepository.createManyRecords(csvDataDTO);
 	} catch (err) {
 		if (err.code === 11000) {
